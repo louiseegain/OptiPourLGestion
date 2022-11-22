@@ -12,11 +12,14 @@
         for($i=0 ; $i< $nbr_machine ;$i++){$mon_tableau[$i]= array();}
 
         for($i=0 ; $i<count($taches) ;$i++){
+
             if($taches>$plus_grande_tache){
                 $plus_grande_tache = $taches[$i];
             }
 
-            $moyenne_taches .= $taches[$i];
+
+            $moyenne_taches += $taches[$i];
+
 
             $max = 0;
             $num_machine = 0;
@@ -28,7 +31,6 @@
                 }
             }
             $min = $max;
-            
             //machine libre en premiere 
             for($a=0 ; $a< $nbr_machine ;$a++){
                 if(count($mon_tableau[$a])<$min){
@@ -37,92 +39,13 @@
                 }
             }
 
+
             for($taille_tache = 0; $taille_tache < $taches[$i]; $taille_tache++){
                 $mon_tableau[$num_machine][$taille_tache+$min] = $taches[$i];
             }
         }
-        
 
-        /*
-//AFFICHAGE DES TABLEAUX EN COULEUR 
-echo '<table CELLSPACING="0"><tbody>';
-$color1 = rand(0,255);
-$color2 = rand(0,255);
-$color3 =  rand(0,255);
-for($a=0 ; $a< $nbr_machine ;$a++)
-{
-
-    echo '<tr>';
-    echo '<td>MACHINE '.($a+1).' :</td>';
-
-    $nbr = 0;
-    $compteur = 0;
-    for($b=0 ; $b< count($mon_tableau[$a]) ;$b++)
-    {
-        
-        if($b!=0)
-        {
-           if($nbr != $mon_tableau[$a][$b])
-           {
-                $compteur = 1;
-                $nbr = $mon_tableau[$a][$b];
-                $color1 = (rand(0,255)+rand(0,255))%255;
-                $color2 = rand(0,255)%255;
-                $color3 =  rand(0,255)%255;;
-                echo '<td style="background-color:rgb('.$color1.','.$color2.','.$color3.'); color:black">'.$mon_tableau[$a][$b].'</td>';
-           }
-           else
-           {
-                if($compteur < $nbr)
-                {
-                    echo '<td style="background-color:rgb('.$color1.','.$color2.','.$color3.');color: rgb('.$color1.','.$color2.','.$color3.')">'.$mon_tableau[$a][$b].'</td>';
-                    $compteur ++;
-                }
-                else
-                {
-                    $compteur = 0;
-                    $color1 = (rand(0,255)+rand(0,255))%255;
-                    $color2 = rand(0,255)%255;
-                    $color3 =  rand(0,255)%255;
-                    echo '<td style="background-color:rgb('.$color1.','.$color2.','.$color3.'); color:black">'.$mon_tableau[$a][$b].'</td>';
-                }
-            
-           }
-        }
-        else
-        {
-            $nbr = $mon_tableau[$a][$b];
-            echo '<td style="background-color:rgb('.$color1.','.$color2.','.$color3.');color: black">'.$mon_tableau[$a][$b].'</td>';
-            $compteur ++;
-        }
-    }
-    echo '</tr>';
-}
-
-echo '</tbody></table>';
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-*/
-
-       //echo $max."--";
+        $moyenne_taches = $moyenne_taches/count($taches);
         $result = $max/max($plus_grande_tache,$moyenne_taches);
         //var_dump($result);
         
@@ -138,7 +61,7 @@ echo '</tbody></table>';
         }
         $valeur = LSA($nbr_machine, $taches);
 
-        return 1;
+        return $valeur;
     }
 
 
@@ -147,7 +70,8 @@ echo '</tbody></table>';
     {
                 //création du tableau pour le futur graphique
                 $mon_tableau = array();
-
+                $moyenne_taches = 0;
+                $plus_grande_tache = 0;
                 for($i=0 ; $i< $nbr_machine ;$i++)
                 {
                     $mon_tableau[$i]= array();
@@ -159,6 +83,12 @@ echo '</tbody></table>';
                     $max = 0;
                     $num_machine = 0;
                     $num_machine = rand(0,($nbr_machine-1));
+
+                    $moyenne_taches += $taches[$i];
+
+                    if($taches>$plus_grande_tache){
+                        $plus_grande_tache = $taches[$i];
+                    }
                 
                     for($taille_tache = 0; $taille_tache < $taches[$i]; $taille_tache++)
                     {
@@ -177,11 +107,10 @@ echo '</tbody></table>';
                     }
                 }
         
+                $moyenne_taches = $moyenne_taches/count($taches);
+                $result = $max/max($plus_grande_tache,$moyenne_taches);
 
-
-
-                
-              return 1;
+              return $result;
                 
         }
 ?>
