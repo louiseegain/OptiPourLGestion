@@ -122,7 +122,7 @@ echo '</tbody></table>';
 
 */
 
-       echo $max."--";
+       //echo $max."--";
         $result = $max/max($plus_grande_tache,$moyenne_taches);
         //var_dump($result);
         

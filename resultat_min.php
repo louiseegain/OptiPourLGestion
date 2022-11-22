@@ -10,26 +10,23 @@ if( $_POST['duree_max'] < $_POST['duree_min'] ){
 $ratio_LSA =0;
 $ratio_LPT = 0;
 $ratio_RMA = 0;
-//$_POST['nbr_instance']
-for($i=0; $i < 1; $i++){
-    
+
+for($i=0; $i < $_POST['nbr_instance']; $i++){
     $mestaches = array();    
     for($a=0; $a<$_POST['nbr_tache'];$a++)
     {
         $mestaches[$a] = rand($_POST['duree_min'],$_POST['duree_max']);
     }
-    $ratio_LSA .= LSA($_POST['nbr_machine'],$mestaches);
-    $ratio_LPT .= LPT($_POST['nbr_machine'],$mestaches);
-    $ratio_RMA .= RMA($_POST['nbr_machine'],$mestaches);
+
+    $ratio_LSA += LSA($_POST['nbr_machine'],$mestaches);
+    $ratio_LPT += LPT($_POST['nbr_machine'],$mestaches);
+    $ratio_RMA += RMA($_POST['nbr_machine'],$mestaches);
 }
 
 
-$ratio_LSA += number_format($ratio_LSA/$_POST['nbr_instance'],5);
-$ratio_LPT += number_format($ratio_LPT/$_POST['nbr_instance'],5);
-$ratio_RMA += number_format($ratio_RMA/$_POST['nbr_instance'],5);
-
-
-
+$ratio_LSA = $ratio_LSA/$_POST['nbr_instance'];
+$ratio_LPT = $ratio_LPT/$_POST['nbr_instance'];
+$ratio_RMA = $ratio_RMA/$_POST['nbr_instance'];
 
 
 echo'
@@ -64,9 +61,9 @@ echo'
     <td>'.$_POST['nbr_tache'].'</td>
     <td>'.$_POST['duree_min'].'</td>
     <td>'.$_POST['duree_max'].'</td>
-    <td>'.$ratio_LSA.'</td>
-    <td>'.$ratio_LPT.'</td>
-    <td>'.$ratio_RMA.'</td>
+    <td>'.number_format($ratio_LSA,8).'</td>
+    <td>'.number_format($ratio_LPT,8).'</td>
+    <td>'.number_format($ratio_RMA,8).'</td>
 <tr>
 
 </table>
