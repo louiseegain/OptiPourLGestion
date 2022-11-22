@@ -11,7 +11,7 @@
                 
                 <tr>
                     <td style="text-align:right;">Nombre de tache(s) :</td>
-                    <td><input type=number name="nbr_tache" min=2 required="required" ></td>
+                    <td><input type=number name="nbr_tache" min=1 required="required" ></td>
                 </tr>
 
                 <tr>

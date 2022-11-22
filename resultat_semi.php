@@ -6,14 +6,6 @@ if( $_POST['duree_max'] < $_POST['duree_min'] ){
     echo'<html><head><meta http-equiv="Refresh" content="2; url=parametrage_min.php" /></head>ERREUR: La durée maximale d\'une tâche est inférieure à la durée minimale !!!</html>';
 }else{
 
-
-if (($num_machine%2)==0) {
-    $mestaches/2;
-}
-else {
-    $mestaches;
-}
-
 $ratio_LSA =0;
 $ratio_LPT = 0;
 $ratio_RMA = 0;
@@ -25,9 +17,9 @@ for($i=0; $i < $_POST['nbr_instance']; $i++){
         $mestaches[$a] = rand($_POST['duree_min'],$_POST['duree_max']);
     }
 
-    $ratio_LSA += LSA($_POST['nbr_machine'],$mestaches);
-    $ratio_LPT += LPT($_POST['nbr_machine'],$mestaches);
-    $ratio_RMA += RMA($_POST['nbr_machine'],$mestaches);
+    $ratio_LSA += LSA_semi($_POST['nbr_machine'],$mestaches);
+    $ratio_LPT += LPT_semi($_POST['nbr_machine'],$mestaches);
+    $ratio_RMA += RMA_semi($_POST['nbr_machine'],$mestaches);
 }
 
 
@@ -77,6 +69,7 @@ echo'
 
 
 ';
+
 }
 
 ?>
