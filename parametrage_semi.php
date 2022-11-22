@@ -10,22 +10,22 @@
                 </tr>
                 
                 <tr>
-                    <td style="text-align:right;">Nombre de tache(s) :</td>
+                    <td style="text-align:right;">Nombre de tâche(s) :</td>
                     <td><input type=number name="nbr_tache" min=1 required="required" ></td>
                 </tr>
 
                 <tr>
-                    <td style="text-align:right;">durée minimum :</td>
+                    <td style="text-align:right;">Durée minimum :</td>
                     <td><input type=number name="duree_min" min=2 required="required" step=2></td>
                 </tr>
 
                 <tr>
-                    <td style="text-align:right;">durée maximum :</td>
+                    <td style="text-align:right;">Durée maximum :</td>
                     <td><input type=number name="duree_max" min=2 required="required" step=2></td>
                 </tr>
 
                 <tr>
-                    <td style="text-align:right;">nombre d'instances :</td>
+                    <td style="text-align:right;">Nombre d'instances :</td>
                     <td><input type=number min=1 name="nbr_instance" required="required" ></td>
                 </tr>
                     
