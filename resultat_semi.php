@@ -7,6 +7,13 @@ if( $_POST['duree_max'] < $_POST['duree_min'] ){
 }else{
 
 
+if (($num_machine%2)==0) {
+    $mestaches/2;
+}
+else {
+    $mestaches;
+}
+
 $ratio_LSA =0;
 $ratio_LPT = 0;
 $ratio_RMA = 0;
