@@ -3,7 +3,7 @@ include_once 'fonction.php';
 
 if( $_POST['duree_max'] < $_POST['duree_min'] ){
     //redirection 
-    echo'<html><head><meta http-equiv="Refresh" content="2; url=parametrage_min.php" /></head>ERREUR: La durée maximum d\'une tâche est inférieur à la durée minimum !!!</html>';
+    echo'<html><head><meta http-equiv="Refresh" content="2; url=parametrage_min.php" /></head>ERREUR: La durée maximale d\'une tâche est inférieure à la durée minimale !!!</html>';
 }else{
 
 
