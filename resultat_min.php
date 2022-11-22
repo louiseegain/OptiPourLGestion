@@ -4,7 +4,9 @@ include_once 'fonction.php';
 if( $_POST['duree_max'] < $_POST['duree_min'] ){
     //redirection 
     echo'<html><head><meta http-equiv="Refresh" content="2; url=parametrage_min.php" /></head>ERREUR: La durée maximum d\'une tache est inferieur a la durée minimum !!!</html>';
-}
+}else{
+
+
 $ratio_LSA =0;
 $ratio_LPT = 0;
 $ratio_RMA = 0;
@@ -21,9 +23,10 @@ for($i=0; $i < 1; $i++){
     $ratio_RMA .= RMA($_POST['nbr_machine'],$mestaches);
 }
 
-$ratio_LSA .= $ratio_LSA/$_POST['nbr_instance'];
-$ratio_LPT .= $ratio_LPT/$_POST['nbr_instance'];
-$ratio_RMA .= $ratio_RMA/$_POST['nbr_instance'];
+
+$ratio_LSA += number_format($ratio_LSA/$_POST['nbr_instance'],5);
+$ratio_LPT += number_format($ratio_LPT/$_POST['nbr_instance'],5);
+$ratio_RMA += number_format($ratio_RMA/$_POST['nbr_instance'],5);
 
 
 
@@ -70,6 +73,6 @@ echo'
 
 
 ';
-
+}
 
 ?>

@@ -43,6 +43,7 @@
         }
         
 
+        /*
 //AFFICHAGE DES TABLEAUX EN COULEUR 
 echo '<table CELLSPACING="0"><tbody>';
 $color1 = rand(0,255);
@@ -119,20 +120,12 @@ echo '</tbody></table>';
 
 
 
+*/
 
-
-
-        $max = 0;
-        for($i=0 ; $i< $nbr_machine ;$i++){
-            
-            if ( count($mon_tableau[$i]) > $max ){
-                $max = count($mon_tableau[$i]);
-            }
-        }
-
-        echo $max;
+       echo $max."--";
         $result = $max/max($plus_grande_tache,$moyenne_taches);
-        var_dump($result);
+        //var_dump($result);
+        
         return $result;
     }
     
